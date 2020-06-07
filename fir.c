@@ -9,7 +9,7 @@
 
 int* buffr_ptr;
 
-int fir(int xin, int w[], int N, int x[]) {
+int fir(int xin, const int w[], int N, int x[]) {
 
 	// If buffer is empty or not loaded return 0
 	static int loaded = 0;
@@ -33,16 +33,15 @@ int fir(int xin, int w[], int N, int x[]) {
 	}
 	*buffr_ptr = xin;
 
-	int y = 0;
+	long y = 0;
 	int i;
 	// Initialize counter with start value n
     int j = N - n - 1;
-	for (i = 0; i < N; ++i) {
-		y += w[i] * x[(N - 1) - (j % N)];
-	 	++j;
+	for (i = 0; i < N; ++i, ++j) {
+		y += w[i] * (long) x[(N - 1) - (j % N)];
 	}
 
-	return y;
+	return (y >> 15);
 
 }
 

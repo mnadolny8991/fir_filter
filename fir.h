@@ -20,6 +20,6 @@
  * OUTPUT:
  * y - current output value of a filter
  */
-int fir(int xin, int w[], int N, int x[]);
+int fir(int xin, const int w[], int N, int x[]);
 
 #endif /* FIR_H_ */
